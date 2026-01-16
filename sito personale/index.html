@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VoidCoder – Web Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      scroll-behavior: smooth;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 100px 10%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    h1, h2, h3 {
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    p {
+      max-width: 650px;
+      line-height: 1.7;
+      color: #c7d2fe;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(120deg, #6366f1, #22d3ee);
+      color: #020617;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 6vw, 5rem);
+      animation: fadeUp 1.2s ease forwards;
+    }
+
+    .hero span {
+      font-weight: 400;
+      font-size: 1.2rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      animation: fadeUp 1.6s ease forwards;
+    }
+
+    /* CARDS */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      margin-top: 60px;
+    }
+
+    .card {
+      background: #020617;
+      border-radius: 18px;
+      padding: 35px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+      transform: translateY(50px);
+      opacity: 0;
+      transition: all 0.8s ease;
+    }
+
+    .card.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #a5b4fc;
+    }
+
+    /* PARALLAX */
+    .parallax {
+      background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c') center/cover fixed;
+      position: relative;
+    }
+
+    .parallax::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(2,6,23,0.75);
+    }
+
+    .parallax * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* CONTACT */
+    .contact-box {
+      margin-top: 40px;
+      background: #020617;
+      padding: 30px;
+      border-radius: 16px;
+      max-width: 500px;
+    }
+
+    .contact-box p {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 40px;
+      background: #020617;
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <h1>VoidCoder</h1>
+    <span>Web Developer Professionista</span>
+    <p>Sviluppo siti web su misura, applicazioni performanti e plugin personalizzati.
+       Trasformo idee in prodotti digitali solidi e scalabili.</p>
+  </section>
+
+  <section>
+    <h2>Cosa faccio</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Siti Web su Misura</h3>
+        <p>Landing page, portfolio e siti aziendali sviluppati da zero, veloci e responsive.</p>
+      </div>
+      <div class="card">
+        <h3>Plugin & Custom Code</h3>
+        <p>Plugin personalizzati, integrazioni avanzate e funzionalità su richiesta.</p>
+      </div>
+      <div class="card">
+        <h3>Performance & SEO</h3>
+        <p>Codice pulito, ottimizzazione caricamento e struttura SEO-friendly.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="parallax">
+    <h2>Approccio</h2>
+    <p>Ogni progetto è unico. Analizzo le esigenze, progetto l'interfaccia e sviluppo soluzioni
+       moderne, sicure e mantenibili nel tempo.</p>
+  </section>
+
+  <section>
+    <h2>Contatti</h2>
+    <p>Hai un progetto o un'idea? Parliamone.</p>
+    <div class="contact-box">
+      <p>📧 voidcoderr@gmail.com</p>
+      <p>📞 350 149 9771</p>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 VoidCoder – Web Developer
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.card').forEach(card => observer.observe(card));
+  </script>
+
+</body>
+</html>
